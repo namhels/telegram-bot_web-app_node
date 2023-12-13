@@ -4,7 +4,7 @@
 const TelegramBot = require("node-telegram-bot-api");
 
 const token = "6776775082:AAGUpEa7a3fjpuf9JSBUB7x4JRbZcWKcsAQ";
-const webAppUrl = "https://www.google.com/";
+const webAppUrl = "https://meek-boba-901598.netlify.app/";
 
 const bot = new TelegramBot(token, { polling: true });
 
