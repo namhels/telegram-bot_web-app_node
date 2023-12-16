@@ -4,7 +4,7 @@
 const TelegramBot = require("node-telegram-bot-api");
 
 const token = "6776775082:AAGUpEa7a3fjpuf9JSBUB7x4JRbZcWKcsAQ";
-const webAppUrl = "https://meek-boba-901598.netlify.app/";
+const webAppUrl = "https://meek-boba-901598.netlify.app";
 
 const bot = new TelegramBot(token, { polling: true });
 
@@ -18,35 +18,44 @@ bot.on("message", async (msg) => {
       "A button will appear below, fill out the form",
       {
         reply_markup: {
-          keyboard: [[{ text: "Fill out the form", web_app: {url: webAppUrl + '/form'} }]],
+          keyboard: [
+            [
+              {
+                text: "Fill out the form",
+                web_app: { url: webAppUrl + "/form" },
+              },
+            ],
+          ],
         },
       }
     );
-    
-		await bot.sendMessage(
+
+    await bot.sendMessage(
       chatId,
       "Go to our online store by clicking the button below",
       {
         reply_markup: {
-          inline_keyboard: [[{ text: "Make an order", web_app: {url: webAppUrl} }]],
+          inline_keyboard: [
+            [{ text: "Make an order", web_app: { url: webAppUrl } }],
+          ],
         },
       }
     );
   }
 
-  if(msg?.web_app_data?.data) {
+  if (msg?.web_app_data?.data) {
     try {
-        const data = JSON.parse(msg?.web_app_data?.data)
-        console.log(data)
-        await bot.sendMessage(chatId, 'Спасибо за обратную связь!')
-        await bot.sendMessage(chatId, 'Ваша страна: ' + data?.country);
-        await bot.sendMessage(chatId, 'Ваша улица: ' + data?.street);
+      const data = JSON.parse(msg?.web_app_data?.data);
+      console.log(data);
+      await bot.sendMessage(chatId, "Thanks for your feedback!");
+      await bot.sendMessage(chatId, "Your country: " + data?.country);
+      await bot.sendMessage(chatId, "Your street: " + data?.street);
 
-        setTimeout(async () => {
-            await bot.sendMessage(chatId, 'Всю информацию вы получите в этом чате');
-        }, 3000)
+      setTimeout(async () => {
+        await bot.sendMessage(chatId, "Всю информацию вы получите в этом чате");
+      }, 3000);
     } catch (e) {
-        console.log(e);
+      console.log(e);
     }
-}
+  }
 });
