@@ -58,7 +58,7 @@ bot.on("message", async (msg) => {
       await bot.sendMessage(chatId, "Your street: " + data?.street);
 
       setTimeout(async () => {
-        await bot.sendMessage(chatId, "Всю информацию вы получите в этом чате");
+        await bot.sendMessage(chatId, "You will receive all the information in this chat");
       }, 3000);
     } catch (e) {
       console.log(e);
@@ -72,9 +72,9 @@ app.post('/web-data', async (req, res) => {
       await bot.answerWebAppQuery(queryId, {
           type: 'article',
           id: queryId,
-          title: 'Успешная покупка',
+          title: 'Successful purchase',
           input_message_content: {
-              message_text: ` Поздравляю с покупкой, вы приобрели товар на сумму ${totalPrice}, ${products.map(item => item.title).join(', ')}`
+              message_text: ` Congratulations on your purchase, you have purchased an item worth ${totalPrice}, ${products.map(item => item.title).join(', ')}`
           }
       })
       return res.status(200).json({});
