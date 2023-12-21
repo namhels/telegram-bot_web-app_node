@@ -27,7 +27,7 @@ bot.on("message", async (msg) => {
           keyboard: [
             [
               {
-                text: "Fill out the form",
+                text: "Fill out form",
                 web_app: { url: webAppUrl + "/form" },
               },
             ],
