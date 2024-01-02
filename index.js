@@ -38,7 +38,7 @@ bot.on("message", async (msg) => {
 
     await bot.sendMessage(
       chatId,
-      "Go to our online store by clicking the button below",
+      "Go to online store by clicking the button below",
       {
         reply_markup: {
           inline_keyboard: [
